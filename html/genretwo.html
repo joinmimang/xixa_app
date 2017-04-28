@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/choice.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/genre.css"/>
+    <title></title>
+</head>
+<style>
+    #test-wrap{
+        position: absolute;
+    }
+    .arr-ul li{
+        list-style: none;
+        padding: 4px;
+        border-bottom: 1px solid silver;
+        width: 100%;
+        height: 20px;
+        text-align: center;
+        background-color: #FFB3B3;
+    }
+    #li-two{
+        position: absolute;
+        left: 88px;
+        border-left: 1px solid;
+    }
+    .goods_name{
+        font-size: 16px;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+    }
+    .shop_price{
+        font-size: 25px;
+        color: red;
+        font-weight: bold;
+        text-align: right;
+        margin-top: 6px;
+    }
+    .icon-chevron{
+        display: block;
+        float: left;
+        height: 40px;
+        line-height: 40px;
+        width: 10%;
+        text-align: center;
+    }
+</style>
+<body>
+    <!--导入jquery模板-->
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/md5.min.js"></script>
+    <script type="text/javascript" src="../script/doT.min.js"></script>
+
+<!--头部-->
+<header>
+    <div class="title">
+        <span class="icon-chevron back">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </span>
+        <span class="title-text">喜居</span>
+            <span class="title-icon">
+                <i class="fa fa-search fa-1x search-position" aria-hidden="true"></i>
+            </span>
+    </div>
+</header>
+<!--分类菜单栏-->
+<div id="type">
+    <div id="test-wrap"></div>
+    <div id="li-two"></div>
+</div>
+<!--主体-->
+<div class="container">
+    <nav class="clearfix">
+        <a href="javascript:;">
+            <div class="nav-choice choice-1 float-left" onclick="choiceprice()">价格区间</div>
+        </a>
+        <a href="javascript:;">
+            <div class="nav-choice choice-2 float-left" onclick="choicecolor()">色系筛选</div>
+        </a>
+        <a href="javascript:;">
+            <div class="nav-choice choice-3 float-left" onclick="choicestyle()">风格筛选</div>
+        </a>
+    </nav>
+    <div class="choice-price" id="choice-price">
+
+    </div>
+
+    <div class="choice-color" id="choice-color">
+
+    </div>
+
+    <div class="choice-style clearfix" id="choice-style">
+
+    </div>
+    <style>
+        .choice-price{
+            position: absolute;
+            width: 100%;
+            font-size: 15px;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#CBFDCC), to(#61D1AB));
+        }
+
+    </style>
+
+    <div class="sofa" id="demo">
+
+    </div>
+</div>
+<!--尾部-->
+<footer>
+    <!--尾部导航栏-->
+    <div class="optionals">
+        <nav>
+            <ul>
+                <li class="home">
+                        <span class="optional-icon">
+                            <i class="fa fa-home fa-1x fa-optional" id="icon" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text">首页</span>
+                </li>
+                <li class="option">
+                        <span class="optional-icon">
+                            <i class="fa fa-list-alt fa-1x " aria-hidden="true" style="color: indianred"></i>
+                        </span>
+                    <span class="optional-text" style="color: indianred">分类</span>
+                </li>
+                <li class="model">
+                        <span class="optional-icon">
+                            <i class="fa fa-picture-o fa-1x fa-optional" aria-hidden="true" ></i>
+                        </span>
+                    <span class="optional-text" >样板间</span>
+                </li>
+                <li class="news">
+                        <span class="optional-icon">
+                            <i class="fa fa-comment-o fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text">消息</span>
+                </li>
+                <li class="user">
+                        <span class="optional-icon">
+                            <i class="fa fa-user fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text" style="margin-left: -2px;">我</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+<!--导入本页面js-->
+<script src='../js/genre.js'></script>
+
+<script id="encodetmpl" type="text/x-dot-template">
+    <ul class="arr-ul">
+        {{~it:value:index}}
+        <li data-id="{{=value.id}}">
+            <p>{{=value.name}}</p>
+        </li>
+        {{~}}
+    </ul>
+</script>
+
+<script id="arr" type="text/x-dot-template">
+    <div>
+        <p style='text-align: center;margin-top: 50%;color: darkgray;font-size: 24px;'>暂无数据</p>
+    </div>
+</script>
+
+<script id="goods" type="text/x-dot-template">
+    <ul>
+        {{~it:value:index}}
+        <li data-id="{{=value.goods_id}}">
+            <p>
+                <img src="{{=value.original_img}}" >
+            </p>
+            <hr>
+            <p class="goods_name">{{=value.goods_name}}</p>
+            <p class="shop_price">￥{{=value.shop_price}}</p>
+        </li>
+        {{~}}
+    </ul>
+</script>
+
+<script id="good-colors" type="text/x-dot-template">
+    {{~it[1].attr_values:value:index}}
+    <ul class="style-ul float-left">
+        <li>
+            {{= value }}
+        </li>
+    </ul>
+    {{~}}
+</script>
+
+<script id="good-styles" type="text/x-dot-template">
+    {{~it[0].attr_values:value:index}}
+    <ul class="style-ul float-left">
+        <li>{{= value }}</li>
+    </ul>
+    {{~}}
+</script>
+
+<script id="good-prices" type="text/x-dot-template">
+    {{~it[2].attr_values:value:index}}
+    <ul class="style-ul float-left">
+        <li>{{= value }}</li>
+    </ul>
+    {{~}}
+</script>
+
+<script>
+   apiready = function() {
+       $(".title-icon").click(function(){
+           api.openWin({
+               name: 'goodsearch',
+               url: './goodsearch.html'
+           });
+       });
+       $(".back").click(function(){
+           api.closeWin();
+       });
+       $(".home").click(function(){
+           api.openWin({
+               name: 'te',
+               url: './te.html'
+           });
+       });
+       $(".option").click(function(){
+           api.openWin({
+               name: 'sample',
+               url: './sample.html'
+           });
+       });
+       $(".model").click(function(){
+           api.openWin({
+               name: 'sofa',
+               url: './sofa.html'
+           });
+       });
+       $(".user").click(function(){
+           api.openWin({
+               name: 'merchant',
+               url: './merchant.html'
+           });
+       });
+
+        var timestamp = Date.parse(new Date()) / 1000;
+        var parent_id = localStorage.parentid;
+        var sign = md5(String(parent_id) + timestamp + 'xixa.me');
+        var obj = {'id': parent_id};
+        //localStorage.parentid = parent_id;
+        // alert(parent_id)
+        console.log(obj);
+        $.getJSON("http://xixa.me/Api/Goods/goodsList", obj, function (data) {
+            console.log(data);
+            if (data.status == 1) {
+                if (data.result.goods_list && data.result.goods_list.length != 0) {
+                    var arrText = doT.template($("#goods").text());
+                    $("#demo").html(arrText(data.result.goods_list));
+                    console.log(data.result.goods_list)
+                    $("#choice-style,#choice-color,#choice-price").on('click', '.style-ul', function () {
+                        var timestamp = Date.parse(new Date()) / 1000,
+                                id = localStorage.parentid,
+                                attr = $(this).text().trim();
+                        console.log(attr);
+                        var sign = md5(attr + String(id) + timestamp + 'xixa.me');
+                        var obj = {'time': timestamp, 'id': id, 'sign': sign, 'attr': attr};
+                        $.post("http://xixa.me/Api/Goods/goodsAttr", obj, function (data) {
+                            if (data.result.goods_list && data.result.goods_list.length != 0) {
+                                var arrText = doT.template($("#goods").text());
+                                $("#demo").html(arrText(data.result.goods_list));
+                            } else {
+                                $("#demo").html("<p style='text-align: center;margin-top: 50%;color: darkgray;font-size: 24px;'>" +
+                                        "暂无数据</p>"
+                                );
+                            }
+                        }, 'json');
+                    });
+
+                } else {
+                    $("#demo").html("<p style='text-align: center;margin-top: 50%;color: darkgray;font-size: 24px;'>" +
+                            "暂无数据</p>"
+                    );
+                }
+            } else {
+                $("#demo").html("error");
+            }
+        }, 'json');
+
+        $('#demo').on('click', 'li', function () {
+            var goods_id = $(this).data('id');
+            localStorage.goodsid = goods_id;
+            api.openWin({
+                name: 'commodity',
+                url: './commodity.html'
+            });
+        });
+
+        $("#choice-style,#choice-color,#choice-price").on('click', '.style-ul', function () {
+            $("#choice-style,#choice-color,#choice-price").hide();
+        });
+   }
+   function choicecolor() {
+       var timestamp = Date.parse(new Date()) / 1000
+       var parent_id = 0;
+       var sign = md5(String(parent_id) + timestamp + 'xixa.me');
+       var obj = {'id': parent_id, 'time': timestamp, 'sign': sign};
+       //alert(parent_id);
+       console.log(obj);
+       $.post("http://xixa.me/Api/Goods/goodsFilter", obj, function (data) {
+           console.log(data);
+           if (data.status == 1) {
+               var arrText = doT.template($("#good-colors").text());
+               $("#choice-color").html(arrText(data.result));
+               // console.log(data.result.attr_values);
+           } else {
+               $("#choice-color").html("error");
+           }
+       }, 'json');
+   }
+
+   function choicestyle() {
+       var timestamp = Date.parse(new Date()) / 1000
+       var parent_id = 0;
+       var sign = md5(String(parent_id) + timestamp + 'xixa.me');
+       var obj = {'id': parent_id, 'time': timestamp, 'sign': sign};
+       //alert(parent_id);
+       console.log(obj);
+       $.post("http://xixa.me/Api/Goods/goodsFilter", obj, function (data) {
+           console.log(data);
+           if (data.status == 1) {
+               var arrText = doT.template($("#good-styles").text());
+               $("#choice-style").html(arrText(data.result));
+               // console.log(data.result.attr_values);
+           } else {
+               $("#choice-style").html("error");
+           }
+       }, 'json');
+   }
+
+   function choiceprice() {
+       var timestamp = Date.parse(new Date()) / 1000;
+       var parent_id = 0;
+       var sign = md5(String(parent_id) + timestamp + 'xixa.me');
+       var obj = {'id': parent_id, 'time': timestamp, 'sign': sign};
+       //alert(parent_id);
+       console.log(obj);
+       $.post("http://xixa.me/Api/Goods/goodsFilter", obj, function (data) {
+           console.log(data);
+           if (data.status == 1) {
+               var arrText = doT.template($("#good-prices").text());
+               $("#choice-price").html(arrText(data.result));
+               // console.log(data.result.attr_values);
+           } else {
+               $("#choice-price").html("error");
+           }
+       }, 'json');
+   }
+
+
+</script>
+
+<script>
+    $('#li-two').on('click','li',function(){
+        $("#type").hide();
+    });
+    $(".choice-1").click(function(){
+        $(".choice-color").css("display","none");
+        $(".choice-style").css("display","none");
+        $(".choice-price").toggle();
+    });
+    $(".choice-2").click(function(){
+        $(".choice-style").css("display","none");
+        $(".choice-price").css("display","none");
+        $(".choice-color").toggle();
+    });
+    $(".choice-3").click(function(){
+        $(".choice-color").css("display","none");
+        $(".choice-price").css("display","none");
+        $(".choice-style").toggle();
+    });
+</script>
+
+
+</body>
+</html>

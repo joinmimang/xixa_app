@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/sofa.css"/>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/api.js"></script>
+    <header>
+        <div class="title">
+            <span class="title-text">喜居</span>
+            <span class="title-icon">
+                <i class="fa fa-search fa-1x search-position" aria-hidden="true"></i>
+            </span>
+        </div>
+    </header>
+    <div id="container">
+        <div class="sofas">
+            <span class="sofa img-a">
+                <img src="../image/global-c.jpg"/>
+            </span>
+            <span class="sofa img-b">
+                <img src="../image/sofa-a.jpg"/>
+            </span>
+            <span class="sofa img-c">
+                <img src="../image/sofa-c.jpg"/>
+            </span>
+            <span class="sofa img-c">
+                <img src="../image/sofa-d.jpg"/>
+            </span>
+        </div>
+    </div>
+
+    <footer>
+        <div class="optionals">
+            <nav>
+                <ul>
+                    <li class="home">
+                        <span class="optional-icon">
+                            <i class="fa fa-home fa-1x fa-optional" id="icon" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">首页</span>
+                    </li>
+                    <li class="option">
+                        <span class="optional-icon">
+                            <i class="fa fa-list-alt fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">分类</span>
+                    </li>
+                    <li class="model">
+                        <span class="optional-icon">
+                            <i class="fa fa-picture-o fa-1x " aria-hidden="true" style="color: indianred"></i>
+                        </span>
+                        <span class="optional-text" style="color: indianred">样板间</span>
+                    </li>
+                    <li class="news">
+                        <span class="optional-icon">
+                            <i class="fa fa-comment-o fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">消息</span>
+                    </li>
+                    <li class="user">
+                        <span class="optional-icon">
+                            <i class="fa fa-user fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text" style="margin-left: -2px;">我</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+<!--<script>
+    $(function(){
+        $(".optionals nav ul li").click(function() {
+            /*$(".optionals nav ul li span i").css("color","red");
+
+            console.log($(".optionals nav ul li span i").attribute());*/
+            $("#icon").removeClass("fa-optional:before");
+            $("#icon").addClass("fa-on-optional:before");
+        });
+    });
+</script>-->
+<script>
+    apiready = function(){
+        $(".home").click(function(){
+            api.openWin({
+                name: 'te',
+                url: './te.html'
+            });
+        });
+        $(".option").click(function(){
+            api.openWin({
+                name: 'sample',
+                url: './sample.html'
+            });
+        });
+        $(".model").click(function(){
+            api.openWin({
+                name: 'sofa',
+                url: './sofa.html'
+            });
+        });
+        $(".user").click(function(){
+            api.openWin({
+                name: 'merchant',
+                url: './merchant.html'
+            });
+        });
+
+        $(".sofa").click(function(){
+            api.openWin({
+                name: 'commodity',
+                url: './commodity.html'
+            });
+        });
+    };
+</script>
+</body>
+</html>

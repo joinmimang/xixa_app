@@ -1,0 +1,161 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color:#ffffff;
+}
+.fa{
+    color: #ffffff;
+}
+header{
+    /*position: fixed;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+    box-sizing:border-box;
+    border: 0px solid red;*/
+    position: fixed;
+    width: 100%;
+    /* height: 50px; */
+    top: 0;
+    line-height: 50px;
+    background-color: #FF6766;
+    height: 40px;
+    z-index: 2;
+    box-sizing: border-box;
+    border: 0px solid red;
+}
+.title{
+    width: 100%;
+    height: 40px;
+    background-color: #E95E61;
+    position: absolute;
+}
+.title .title-text{
+    display: block;
+    width: 35px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing:border-box;
+    border: 0px solid red;
+    font-size: 16px;
+    color: #ffffff;
+}
+.title .title-icon{
+    display: block;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+    position: relative;
+    top: -40px;
+    right: 1%;
+}
+
+#container{
+    /*top: 40px;
+    bottom: 50px;
+    width: 100%;
+    position: absolute;
+    box-sizing:border-box;
+    border: 0px solid red;*/
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 40px;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    /* z-index: 1; */
+    box-sizing: border-box;
+    border: 0px solid red;
+}
+
+#container .maps{
+    width: 100%;
+    height: auto;
+    box-sizing:border-box;
+    border: 0px solid red;
+}
+#container .maps .map{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 4px;
+}
+#container .maps .map img{
+    width: 100%;
+    height: 100%;
+}
+
+
+#container .bathrooms{
+    width: 100%;
+    height: auto;
+    box-sizing:border-box;
+    border: 0px solid red;
+}
+#container .bathrooms .bathroom-text{
+    display: block;
+    width: 100%;
+    height: auto;
+    box-sizing:border-box;
+    border: 0px solid red;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+#container .bathrooms .bathroom{
+    display: block;
+    width: 100%;
+    margin-bottom: 4px;
+}
+#container .bathrooms .bathroom img{
+    width: 100%;
+    height: 100%;
+}
+
+footer{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    height: 50px;
+    z-index: 2;
+    box-sizing:border-box;
+    border: 0px solid red;
+    background-color: #ffffff;
+}
+.optionals nav ul{
+    list-style: none;
+}
+.optionals nav ul li{
+    float: left;
+    width: 20%;
+    height: 50px;
+    box-sizing:border-box;
+    border: 0px solid red;
+}
+.optionals nav ul li .optional-icon{
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6px;
+}
+.optionals nav ul li .optional-text{
+    display: block;
+    width: 100%;
+    height: 16px;
+    font-size: 12px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 4px;
+}
+.fa-optional{
+    color: darkgrey !important;
+}

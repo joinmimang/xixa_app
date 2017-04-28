@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/choice.css"/>
+    <title></title>
+</head>
+<body>
+<!--头部标签-->
+<header>
+    <!-- 定义链接标签-->
+    <nav>
+        <div class="nav-top clearfix">
+            <div class="nav-chevron back">
+                <span class="icon-chevron">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="nav-more">
+                <span class="icon-ellipsis">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="shop-nav clearfix">
+                <span>喜居沙发</span>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <nav class="clearfix">
+            <a href="javascript:;">
+                <div class="nav-choice choice-1 float-left">价格区间</div>
+            </a>
+            <a href="javascript:;">
+                <div class="nav-choice choice-2 float-left">色系筛选</div>
+            </a>
+            <a href="javascript:;">
+                <div class="nav-choice choice-3 float-left">风格筛选</div>
+            </a>
+        </nav>
+
+        <div class="choice-color">
+            <div class="panel-line">
+                <span>贵族</span>
+                <span>金黄</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>枣红</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>紫</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="panel-line">
+                <span>时尚</span>
+                <span>红</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>橙</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>黄</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>绿</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>双混</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="panel-line">
+                <span>淡色</span>
+                <span>粉</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>蓝</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>黄</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="panel-line">
+                <span>花纹</span>
+                <span>纯色</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>碎花</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>大花</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+                <span>混搭</span>
+                <span>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="choice-style clearfix">
+            <ul class="style-ul float-left">
+                <li>简约</li>
+                <li>时尚</li>
+                <li>古典</li>
+                <li>中式</li>
+            </ul>
+            <ul class="style-ul float-left">
+                <li>欧式</li>
+                <li>地中海</li>
+                <li>田园</li>
+                <li>美式</li>
+            </ul>
+            <ul class="style-ul float-left">
+                <li>东南亚</li>
+                <li>日式</li>
+                <li>非洲</li>
+            </ul>
+        </div>
+
+
+        <div class="sofa">
+            <img src="../image/choice-sofa.jpg" alt="沙发"/>
+            <img src="../image/sofa.jpg" alt="沙发" class="into-img"/>
+        </div>
+    </div>
+    <footer></footer>
+<script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../js/choice.js"></script>
+<script>
+    apiready = function(){
+        $(".into-img").click(function(){
+            api.openWin({
+                name: 'commodity',
+                url: './commodity.html'
+            });
+        });
+        $(".back").click(function(){
+            api.closeWin();
+        });
+    };
+</script>
+</body>
+</html>

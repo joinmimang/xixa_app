@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/classify.css"/>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/api.js"></script>
+    <header>
+        <div class="title">
+            <span class="title-text">喜居</span>
+            <span class="title-icon">
+                <i class="fa fa-search fa-1x search-position" aria-hidden="true"></i>
+            </span>
+        </div>
+    </header>
+    <div id="container">
+        <div class="shuffling">
+            <span>
+                <img src="../image/global-a.jpg"/>
+            </span>
+            <span class="left-icon">
+                <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+            </span>
+            <span class="right-icon">
+                <i class="fa fa-angle-right fa-2x right-position" aria-hidden="true"></i>
+            </span>
+        </div>
+        <div class="selects">
+            <div class="select selling">
+                <span class="select-icon"><i class="fa fa-signal fa-2x" aria-hidden="true"></i></span>
+                <span class="select-text">人气热卖</span>
+            </div>
+            <div class="select ontime">
+                <span class="select-icon"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></span>
+                <span class="select-text">限时限量</span>
+            </div>
+            <div class="select recommend">
+                <span class="select-icon"><i class="fa fa-heart fa-2x" aria-hidden="true"></i></span>
+                <span class="select-text">推荐</span>
+            </div>
+        </div>
+        <div class="maps">
+            <span class="map img-a">
+                <img src="../image/global-a.jpg"/>
+            </span>
+            <span class="map img-b">
+                <img src="../image/global-b.jpg"/>
+            </span>
+            <span class="map img-c">
+                <img src="../image/global-c.jpg"/>
+            </span>
+        </div>
+    </div>
+    <footer>
+        <div class="optionals">
+            <nav>
+                <ul>
+                    <li class="home">
+                        <span class="optional-icon">
+                            <i class="fa fa-home fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">首页</span>
+                    </li>
+                    <li class="option">
+                        <span class="optional-icon">
+                            <i class="fa fa-list-alt fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">分类</span>
+                    </li>
+                    <li class="model">
+                        <span class="optional-icon">
+                            <i class="fa fa-picture-o fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">样板间</span>
+                    </li>
+                    <li class="news">
+                        <span class="optional-icon">
+                            <i class="fa fa-comment-o fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text">消息</span>
+                    </li>
+                    <li class="user">
+                        <span class="optional-icon">
+                            <i class="fa fa-user fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                        <span class="optional-text" style="margin-left: -2px;">我</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <!--APIcloud页面跳转-->
+<script>
+    apiready = function(){
+        $(".home").click(function(){
+            api.openWin({
+                name: 'te',
+                url: './te.html'
+            });
+        });
+        $(".option").click(function(){
+            api.openWin({
+                name: 'genre',
+                url: './genre.html'
+            });
+        });
+        $(".model").click(function(){
+            api.openWin({
+                name: 'sofa',
+                url: './sofa.html'
+            });
+        });
+        $(".user").click(function(){
+            api.openWin({
+                name: 'merchant',
+                url: './merchant.html'
+            });
+        });
+    };
+</script>
+</body>
+</html>

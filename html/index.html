@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css"/>
+    <title></title>
+</head>
+<body>
+    <!--导入jquery模板-->
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/md5.min.js"></script>
+<!--头部-->
+    <header>
+        <!--背景图-->
+        <span>
+            <img src="../image/login.png" class="index-img">
+        </span>
+    </header>
+<!--主体-->
+    <div id="container">
+        <!--logo图标及文字-->
+        <div class="logo">
+            <div class="logo-img">
+                <img src="../image/logins.png" class="portrait"/>
+            </div>
+            <span class="logo-text">喜居在线</span>
+            <span class="welcome-text">欢迎进入</span>
+            <span class="welcome-text min-text">代理端业务后台</span>
+        </div>
+        <!--登陆输入界面-->
+        <div class="login-interface">
+          <!--用户名-->
+            <div class="logininput user">
+                <div class="inputicon">
+                    <i class="fa fa-user fa-1x user-position" aria-hidden="true"></i>
+                    <span class="input-line"></span>
+                </div>
+                <input type="text" id="usertel" class="rqShuRu"/>
+                <label></label>
+            </div>
+            <!--密码-->
+            <div class="logininput password">
+                <div class="inputicon">
+                    <i class="fa fa-lock fa-1x lock-position" aria-hidden="true"></i>
+                    <span class="input-line"></span>
+                </div>
+                <input type="password" id="userpass" class="rqShuRu"/>
+            </div>
+            <!--登录按钮-->
+            <div class="logininput enter">
+                <div class="inputicon">
+                    <i class="fa fa-power-off fa-1x power-position" aria-hidden="true"></i>
+                </div>
+                <div class="enter-btn" value="登入"/>登入</div>
+            </div>
+            <!--跳转注册页面按钮-->
+            <div class="register enter">
+                <div class="inputicon">
+                    <i class="fa fa-check-square-o fa-1x " aria-hidden="true"></i>
+                </div>
+                <div  class="goreg-btn" value="前往注册"/>前往注册</div>
+            </div>
+        </div>
+    </div>
+<!--尾部-->
+    <footer></footer>
+<script>
+    function ksort(obj) {
+        var timestamp = Date.parse(new Date()) / 1000;
+        var keys = Object.keys(obj);
+        keys.sort();
+        var len = keys.length;
+        var s = '';
+        for (i in keys) {
+            s += obj[keys[i]];
+        }
+        var sign = md5(s + timestamp + 'xixa.me');
+        obj.sign = sign;
+        obj.time = timestamp;
+        return obj;
+    }
+</script>
+<script>
+    $(function(){
+        $(".enter-btn").click(function(){
+            var mobile = $('#usertel').val(), password = $('#userpass').val();
+            var obj = {'mobile': mobile, 'password': password};
+            var new_obj = ksort(obj);
+            console.log(new_obj);
+            $.post("http://xixa.me/Api/user/login", new_obj, function (data) {
+                if(data.status == 1){
+                        api.openWin({
+                            name: 'te',
+                            url: './te.html'
+                        });
+                    localStorage.enterid = data.result.sid;
+                }else{
+                    api.alert({
+                        title: '提示',
+                        msg: data.msg
+                    })
+                }
+            },'json');
+        });
+        $(".goreg-btn").click(function(){
+            //window.location.href="registered.html";
+            api.openWin({
+                name: 'registered',
+                url: './registered.html'
+            });
+        });
+    });
+</script>
+</body>
+</html>

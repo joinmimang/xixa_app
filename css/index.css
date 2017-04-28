@@ -1,0 +1,156 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+header{
+    width: 1920px;
+    max-width:100%;
+}
+.index-img{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+#container{
+    position: relative;
+    z-index: 60;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container .logo{
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 0.7em;
+}
+#container .logo .portrait{
+    width: 100%;
+    background: url("../image/portrait.jpg") 0px 0px no-repeat;
+    border-radius: 10px
+}
+#container .logo .logo-img{
+    width: 108px;
+    height: 108px;
+    /*background-color: antiquewhite;*/
+    position: relative;
+    top: 74px;
+    margin-left: 20px;
+
+}
+#container .logo .logo-text{
+    display: block;
+    width: 130px;
+    height: 30px;
+    font-size: 24px;
+    color: #ffffff;
+    position: relative;
+    text-align: center;
+    top: 80px;
+    margin-left: 10px;
+}
+#container .logo .welcome-text{
+    display: block;
+    width: 130px;
+    height: 30px;
+    font-size: 30px;
+    color: #ffffff;
+    position: relative;
+    text-align: center;
+    top: 98px;
+    margin-left: 10px;
+}
+#container .logo .min-text{
+    font-size: 20px !important;
+    width: 150px !important;
+    margin-left: 0px;
+    top: 105px;
+}
+#container .login-interface{
+    height: 200px;
+    /*position: relative;
+    top: 174px;*/
+    margin-top: 68%;
+}
+#container .login-interface .rqShuRu{
+    text-indent: 35px;
+    font-size: 16px;
+    width: 100%;
+    height: 36px;
+    opacity: 0.3;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+
+#container .login-interface .logininput{
+    width: 100%;
+    height: 52px;
+    float: left;
+    position: relative;
+    box-sizing:border-box;
+    border: 0px solid red;
+}
+#container .login-interface .logininput label{
+    color: #C43B3B;
+    font-size: 12px;
+    position: absolute;
+}
+#container .login-interface .inputicon{
+    float: left;
+    position: absolute;
+    color: white;
+    top: 10px;
+    left: 10px;
+}
+#container .login-interface .input-line{
+    height: 26px;
+    width: 1px;
+    background-color: white;
+    position: absolute;
+    left: 22px;
+    top: -4px;
+}
+#container .login-interface .enter input{
+    font-size: 16px;
+    height: 38px;
+    width: 100%;
+    color: #ffffff;
+    border: 1px solid #E95E61;
+    background-color: rgb(233,94,97);
+    border-radius: 6px;
+}
+.register{
+    width: 100%;
+    height: 52px;
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    border: 0px solid red;
+}
+.goreg-btn{
+    width: 100%;
+    height: 38px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    line-height: 38px;
+    border: 1px solid #48B78F !important;
+    background-color:rgb(72,183,143) !important;
+}
+.enter-btn{
+    width: 100%;
+    height: 38px;
+    border: 1px solid #E95E61 !important;
+    background-color: #E95E61;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    line-height: 38px;
+}
+
+
+
+
+

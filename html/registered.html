@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/registered.css"/>
+    <title></title>
+</head>
+<!--导入jquery模板-->
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/md5.min.js"></script>
+<body>
+<!--头部-->
+<header>
+    <!--背景图-->
+        <span>
+            <img src="../image/login.png" class="index-img">
+        </span>
+</header>
+<!--主体-->
+<div id="container">
+    <!--logo图标及文字-->
+    <div class="logo">
+        <div class="logo-img">
+            <img src="../image/logins.png" class="portrait"/>
+        </div>
+        <span class="logo-text">喜居在线</span>
+        <span class="welcome-text">欢迎进入</span>
+        <span class="welcome-text min-text">代理端业务后台</span>
+    </div>
+    <!--登陆输入界面-->
+    <div class="register-interface">
+        <!--用户名-->
+        <div class="reginput user">
+            <div class="inputicon">
+                <i class="fa fa-phone-square fa-1x user-position" aria-hidden="true"></i>
+                <span class="input-line"></span>
+            </div>
+            <input type="text" id="regtel"class="rqShuRu" placeholder="手机号"/>
+            <input type=hidden id="tt">
+            <label></label>
+        </div>
+        <!--验证码-->
+        <div class="reginput code">
+            <div class="inputicon">
+                <i class="fa fa-question-circle fa-1x " aria-hidden="true"></i>
+                <span class="input-line"></span>
+            </div>
+            <input type="text" id="regcode" class="rqShuRu" placeholder="验证码"/>
+            <div class="getcode">
+                <div class="getcode-btn" value="获取"/>获取</div>
+            </div>
+        </div>
+        <!--密码-->
+        <div class="reginput password">
+            <div class="inputicon">
+                <i class="fa fa-lock fa-1x " aria-hidden="true"></i>
+                <span class="input-line"></span>
+            </div>
+            <input type="password" id="regpass" class="rqShuRu" placeholder="登入密码"/>
+        </div>
+        <!--确认密码-->
+        <div class="reginput ispassword">
+            <div class="inputicon">
+                <i class="fa fa-lock fa-1x " aria-hidden="true"></i>
+                <span class="input-line"></span>
+            </div>
+            <input type="password" id="regifpass" class="rqShuRu" placeholder="确认密码"/>
+        </div>
+        <!--注册按钮-->
+        <div class="reginput register btn">
+            <div class="inputicon">
+                <i class="fa fa-check-square-o fa-1x " aria-hidden="true"></i>
+            </div>
+            <div class="register-btn"/>注册</div>
+        </div>
+        <!--返回登录按钮-->
+        <div class="reginput goenter btn">
+            <div class="inputicon">
+                <i class="fa fa-power-off fa-1x " aria-hidden="true"></i>
+            </div>
+            <div  class="goenter-btn" />返回登入</div>
+        </div>
+    </div>
+</div>
+<!--尾部-->
+<footer></footer>
+<script>
+    function ksort(obj) {
+        var timestamp = Date.parse(new Date()) / 1000;
+        var keys = Object.keys(obj);
+        keys.sort();
+        var len = keys.length;
+        var s = '';
+        for (i in keys) {
+            s += obj[keys[i]];
+        }
+        var sign = md5(s + timestamp + 'xixa.me');
+        obj.sign = sign;
+        obj.time = timestamp;
+        return obj;
+    }
+</script>
+<script>
+    window.onload=function() {
+        document.getElementById('tt').setAttribute('value',Date.parse(new Date())/1000);
+        $.getJSON('http://xixa.me/Api/Base/getServerTime',function (data) {
+            console.log(data.result);
+            $('#server_time').val(data.result);
+        });
+    };
+</script>
+<script>
+    $(".getcode-btn").click(function(){
+        var t = $("#tt").val(), m = $("#regtel").val();
+        var obj = {'t': t, 'n': m};
+        var new_obj = ksort(obj);
+        console.log(new_obj);
+        $.post("http://xixa.me/Api/user/send", new_obj, function (data) {
+            if(data.out == 0){
+               // $(".reginput").find("label").text("正在获取验证码");
+            }else{
+                //$(".reginput").find("label").text(""+data.msg+"");
+                api.alert({
+                    title: '提示',
+                    msg: data.msg
+                })
+            }
+        },'json');
+    });
+    $(".register-btn").click(function(){
+        var t = $('#tt').val(), mobile = $('#regtel').val(), code = $('#regcode').val(),
+                password = $('#regpass').val(), ifpass = $('#regifpass').val();
+        var obj = {'t': t, 'mobile': mobile, 'password': password, 'code': code};
+        var new_obj = ksort(obj);
+        console.log(new_obj);
+        if(password == ifpass){
+            $.post("http://xixa.me/Api/user/reg", new_obj, function (data) {
+                if(data.status == 1){
+                    api.openWin({
+                        name: 'index',
+                        url: './index.html'
+                    });
+                }else{
+                   // $(".reginput").find("label").text(""+data.msg+"");
+                    api.alert({
+                        title: '提示',
+                        msg: data.msg
+                    })
+                }
+            },'json');
+        }else{
+           // $(".reginput").find("label").text("两次密码输入不一致");
+            api.alert({
+                title: '提示',
+                msg: "两次密码输入不一致"
+            })
+        }
+    });
+</script>
+
+<script>
+    apiready = function(){
+        $(".goenter-btn").click(function(){
+            api.openWin({
+                name: 'index',
+                url: './index.html'
+            });
+        });
+    };
+</script>
+</body>
+</html>

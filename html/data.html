@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/data.css"/>
+    <title></title>
+</head>
+<body>
+<!--头部标签-->
+<header>
+    <!-- 定义链接标签-->
+    <nav>
+        <div class="nav-top clearfix">
+            <div class="nav-chevron back">
+                <span class="icon-chevron">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="nav-more">
+                <span class="icon-ellipsis">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+
+                <div class="more-nav">
+                    <div class="home">
+                        <span>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </span>
+                        <span>首页</span>
+                    </div>
+                    <div class="shopcar">
+                        <span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        <span>购物车</span>
+                    </div>
+                    <div class="mycenter">
+                        <span>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <span>我的喜居</span>
+                    </div>
+                    <div class="share">
+                        <span>
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </span>
+                        <span>分享</span>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+
+            </div>
+
+
+            <div class="shop-nav clearfix">
+                <div>
+                    <a href="#container">商品</a>
+                </div>
+                <div>
+                    <a href="#details-img">详情</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0);">评价</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--内容-->
+<div class="container">
+    <div class="sofa">
+        <img src="../image/sofa.jpg" alt="沙发"/>
+    </div>
+
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type a-bacc float-left">
+            <span>A</span>
+        </div>
+        <div class="sofa-length a-bacc float-left">
+            <span>62mm</span>
+        </div>
+    </div>
+
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type b-bacc float-left">
+            <span>B</span>
+        </div>
+        <div class="sofa-length b-bacc float-left">
+            <span>62mm</span>
+        </div>
+    </div>
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type c-bacc float-left">
+            <span>C</span>
+        </div>
+        <div class="sofa-length c-bacc float-left">
+            <span>18mm</span>
+        </div>
+    </div>
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type d-bacc float-left">
+            <span>D</span>
+        </div>
+        <div class="sofa-length d-bacc float-left">
+            <span>蓝牙测量</span>
+        </div>
+    </div>
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type e-bacc float-left">
+            <span>E</span>
+        </div>
+        <div class="sofa-length e-bacc float-left">
+            <span>蓝牙测量</span>
+        </div>
+    </div>
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type g-bacc float-left">
+            <span>G</span>
+        </div>
+        <div class="sofa-length g-bacc float-left">
+            <span>蓝牙测量</span>
+        </div>
+    </div>
+    <div class="sofa-msg clearfix">
+        <div class="sofa-type h-bacc float-left">
+            <span>H</span>
+        </div>
+        <div class="sofa-length h-bacc float-left">
+            <span>蓝牙测量</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- 页脚标签-->
+<footer>
+    <nav class="footer-nav">
+        <div class="repair-fixed clearfix">
+            <div class="footer-customer-service float-left">
+                <div>
+                    <span class="icon-comment">
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>客服</span>
+                </div>
+            </div>
+            <div class="footer-shopping-cart float-left">
+                <div>
+                    <span class="icon-shopping">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>购物车</span>
+                </div>
+            </div>
+            <div class="buy-now float-left">
+                <span>填写完毕,提交订单</span>
+            </div>
+        </div>
+    </nav>
+</footer>
+<script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../js/commodity.js"></script>
+<script>
+    apiready = function(){
+        $(".home").click(function(){
+            api.openWin({
+                name: 'te',
+                url: './te.html'
+            });
+        });
+        $(".mycenter").click(function(){
+            api.openWin({
+                name: 'merchant',
+                url: './merchant.html'
+            });
+        });
+        $(".back").click(function(){
+            api.closeWin();
+        });
+    };
+</script>
+</body>
+</html>

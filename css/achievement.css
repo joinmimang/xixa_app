@@ -1,0 +1,198 @@
+/*CSS��ʼ��*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px arial;
+    /*font: 12px/1.5 tahoma,\5b8b\4f53,arial;*/
+}
+body{
+    background-color: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+code, kbd, pre, samp {
+    font-family: Microsoft YaHei, couriernew, courier, monospace;
+}
+
+small {
+    font-size: 12px;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*------------------------------*/
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+/*---------------header-------------*/
+.achievement{
+    height: 40px;
+    text-align: center;
+    background-color: #E95E61;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/*---------header over---------------*/
+
+
+
+/*--------------container------------*/
+
+
+.ac-msg-1{
+    background-color: #FFEBEC;
+    padding: 10px;
+}
+.ac-msg-2{
+    background-color: #E6E6E6;
+    padding: 10px;
+}
+
+.icon-msg{
+    font-size: 20px;
+}
+.user-msg{
+    font-size: 15px;
+}
+
+.money-msg{
+    font-size: 25px;
+}
+.confirm{
+    width: 70px;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+    font-size: 15px;
+}
+.confirm-bacc-1{
+    background-color: #30CD98;
+}
+
+.confirm-bacc-2{
+    background-color: #FD6768;
+}
+.confirm-bacc-3{
+    background-color: #B3B3B3;
+}
+
+/*---------------container over -------------------*/
+
+
+/*-------------------footer -----------------*/
+
+.footer{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+
+/*fixedԪ���ڲ�����Ƕ��һ��position:absoluteԪ�أ�����װ�����ݣ�Ŀ�ľ���Ϊ������������fixed�ĵ���������һЩfixed�Ŀ�*/
+.repair-fixed{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-msg{
+    width: 50%;
+    height: 50px;
+    background-color: #33CB98;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+}
+.footer-time{
+    background-color: #33CB98;
+}
+.footer-money{
+    background-color: #FF6766;
+}
+
+
+.icon-chevron{
+    position: absolute;
+    left: 1%;
+}

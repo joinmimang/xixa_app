@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/shoppingcar.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+    <title></title>
+    <!--导入jquery模板-->
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script src="../js/swiper-3.3.1.jquery.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/md5.min.js"></script>
+    <script type="text/javascript" src="../script/doT.min.js"></script>
+</head>
+<body>
+<!--头部标签-->
+<header>
+    <!-- 定义链接标签-->
+    <nav>
+        <div class="nav-top clearfix">
+            <div class="nav-chevron back">
+                <span class="icon-chevron">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </span>
+            </div>
+            <span class="car_name">购物车</span>
+            <div class="nav-more" style="position: relative;top: -40px;">
+                <span class="icon-ellipsis">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+                <div class="more-nav">
+                    <div class="home">
+                        <span>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </span>
+                        <span>首页</span>
+                    </div>
+                    <div class="shopcar">
+                        <span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        <span>购物车</span>
+                    </div>
+                    <div class="mycenter">
+                        <span>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <span>我的喜居</span>
+                    </div>
+                    <div class="share">
+                        <span>
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </span>
+                        <span>分享</span>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="masking"></div>
+<div id="container" class="container">
+    <!--<div class="check">
+        <input type="checkbox"/>
+    </div>-->
+    <div id="car_list">
+
+    </div>
+</div>
+<!-- 页脚标签-->
+<footer>
+    <nav class="footer-nav">
+        <div class="repair-fixed clearfix">
+            <div class="footer-customer-service float-left">
+                <div>
+                    <span class="icon-comment">
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>客服</span>
+                </div>
+            </div>
+            <div class="footer-shopping-cart float-left">
+                <div>
+                    <span class="icon-shopping">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>购物车</span>
+                </div>
+            </div>
+            <div class="del-shopping-cart float-left" id="delcar">
+                <span>删除</span>
+            </div>
+            <div class="buy-now float-left">
+                <span>结算</span>
+            </div>
+        </div>
+    </nav>
+</footer>
+<script id="data_list" type="text/x-dot-template">
+    {{~it:value:index}}
+    <div class="car_demo" data-goodsid="{{=value.id}}">
+        <div class="car_title">
+            <span>
+                领劵
+            </span>
+            <span>
+                编辑
+            </span>
+        </div>
+        <div class="car_data">
+            <div class="data_check">
+                <input type="checkbox" name='checkbox1' data-goodsid="{{=value.id}}" />
+            </div>
+            <div class="data_click" data-goods="{{=value.goods_id}}">
+                <div class="data_img">
+                <span>
+                    <img src="{{=value.thum}}" class="car_img"/>
+                </span>
+                </div>
+                <div class="data_text">
+                <span class="cargd_name">
+                    {{=value.goods_name}}
+                </span>
+                <span class="cargd_style">
+                    规格:{{=value.spec_key_name}}
+                </span>
+                <span class="cargd_index">
+                    <!--限购5件-->
+                </span>
+                <span class="cargd_piace">
+                    ￥{{=value.market_price}}
+                </span>
+                <span class="cargd_num">
+                    X {{=value.goods_num}}
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{~}}
+</script>
+<script src="../js/shoppingcar.js"></script>
+<script>
+    function ksort(obj) {
+        var timestamp = Date.parse(new Date()) / 1000;
+        var keys = Object.keys(obj);
+        keys.sort();
+        var len = keys.length;
+        var s = '';
+        for (i in keys) {
+            s += obj[keys[i]];
+        }
+        var sign = md5(s + timestamp + 'xixa.me');
+        obj.sign = sign;
+        obj.time = timestamp;
+        return obj;
+    }
+    $("#delcar").click(function(){
+        var sid = localStorage.enterid;
+        $("input[name='checkbox1']").each(function(){
+            var check = $(this).prop("checked");
+            var id =$(this).data('goodsid');
+            if(check==true){
+                //alert(goods_id);
+                var obj = {'sid': sid, 'ids': id};
+                var new_obj = ksort(obj);
+                console.log(new_obj);
+                $.post("http://xixa.me/Api/cart/delCart", new_obj, function (data) {
+                    var data = JSON.parse(data);
+                    if(data.status==1){
+                        console.log(data);
+                        $("input:checkbox:checked").each(function() {
+                            //$(this).next("div").find(".car_data").remove();
+                            $(this).parent().parent().parent().remove();
+                        });
+                    }else{}
+                });
+            }else{
+                //alert("请选择需要删除的商品")
+            }
+        });
+    });
+
+
+    $('#car_list').on('click','.data_click',function(){
+        var goods_id =$(this).data('goods');
+        //alert(goods_id);
+        localStorage.goodsid =goods_id;
+        api.openWin({
+            name: 'commodity',
+            url: './commodity.html'
+        });
+    });
+
+
+</script>
+</body>
+</html>

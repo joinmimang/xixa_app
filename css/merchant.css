@@ -1,0 +1,250 @@
+/*CSS初始化*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px arial;
+    /*font: 12px/1.5 tahoma,\5b8b\4f53,arial;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+code, kbd, pre, samp {
+    font-family: Microsoft YaHei, couriernew, courier, monospace;
+}
+body{
+    background-color: #ffffff;
+}
+small {
+    font-size: 12px;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*------------------------------*/
+
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+/*------------header----------------*/
+
+.merchant{
+    height: 40px;
+    background-color: #E95E61;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+}
+/*-----------header over-------------*/
+
+/*-------------container--------------*/
+.container{
+    text-align: center;
+}
+
+.me-img img{
+    width: 100%;
+}
+
+.merchant-head{
+    width: 25%;
+    height: 25%;
+    margin: -50px auto 0 auto;
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+}
+.merchant-head img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.me-name{
+    font-size: 20px;
+    color: #696969;
+}
+.me-mark{
+    font-size: 15px;
+}
+
+.me-round{
+    margin: 0 5%;
+}
+.me-round a{
+    color: #696969;
+}
+
+
+
+.round{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+}
+
+.round span{
+    line-height: 80px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.r-green{
+    background-color: #30CD98;
+}
+.r-pink{
+    background-color: #FF9899;
+}
+
+.float-center{
+    text-align: center;
+    width: 80px;
+    margin: 0 auto;
+}
+.round-name{
+    font-size: 15px;
+}
+
+.settlement{
+    font-size: 60px;
+}
+
+.line-round{
+    margin-top: 10%;
+}
+
+
+
+
+.fa{
+    color: #ffffff;
+}
+.adaptive-circle {
+    margin: 10%;
+    width: 80%;
+    height: 0;
+    padding-top: 80%;
+    border-radius: 100%;
+    border: 0px solid #000;
+    box-sizing: border-box;
+    position: relative;
+
+}
+.circle{
+    width: 30%;
+    float: left;
+    height: auto;
+    border: 0px solid red;
+    box-sizing: border-box;
+}
+.round-two{
+    margin-top: 10%;
+}
+.adaptive-text{
+    text-align: center;
+    font-size: 1rem;
+}
+
+.adaptive-circle .layout {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+.adaptive-circle .layout.middle:before {
+    display: inline-block;
+    vertical-align: middle;
+
+    content: '';
+    height: 100%;
+    width: 0;
+    overflow: hidden;
+}
+.adaptive-circle .layout.middle div:first-child {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -6%;
+}
+.icon-chevron{
+    position: absolute;
+    left: 1%;
+}

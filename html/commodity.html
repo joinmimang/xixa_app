@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/commodity.css"/>
+    <title></title>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/md5.min.js"></script>
+    <script type="text/javascript" src="../script/doT.min.js"></script>
+    <script src="../js/swiper-3.3.1.jquery.min.js"></script>
+    <style>
+        .swiper-container{
+            top: 0;
+            height: 100%;
+        }
+        .img-item{
+            width: 80%;
+            height: auto;
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+    </style>
+</head>
+<body>
+<!--头部标签-->
+<header>
+    <!-- 定义链接标签-->
+    <nav>
+        <div class="nav-top clearfix">
+            <div class="nav-chevron back">
+                <span class="icon-chevron">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="nav-more">
+                <span class="icon-ellipsis">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+
+                <div class="more-nav">
+                    <div class="home">
+                        <span>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </span>
+                        <span>首页</span>
+                    </div>
+                    <div class="shopcar">
+                        <span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        <span>购物车</span>
+                    </div>
+                    <div class="mycenter">
+                        <span>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <span>我的喜居</span>
+                    </div>
+                    <div class="share">
+                        <span>
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </span>
+                        <span>分享</span>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+
+            </div>
+
+
+            <div class="shop-nav clearfix">
+                <div>
+                    <a href="#container">商品</a>
+                </div>
+                <div>
+                    <a href="#details-img">详情</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0);">评价</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="masking"></div>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="swiper_maps">
+
+    </div>
+</div>
+
+
+<div id="container" class="container">
+    <div id="bed" class="bed">
+        <!--详情图片容器-->
+        <div class="bed-img" id="bed-img">
+
+        </div>
+        <div class="bed-more">
+            <a href="javascript:;">
+                <div>
+                <span class="bed-icon-ellipsis">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+                </div>
+                <div>更多</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="bed-msg clearfix" id="shop-text">
+
+    </div>
+
+    <div id="details-img" class="details-img">
+
+    </div>
+</div>
+
+<div class="goods_all">
+    <div class="goods_data">
+        <div class="good_img" id="good_img">
+        </div>
+        <div class="goods_title">
+            <span class="goods_piace" id="goods_piace">
+
+            </span>
+            <span class="goods_have">
+                库存250件
+            </span>
+            <span class="goods_up">
+                请选择  颜色分类  尺码
+            </span>
+            <span class="icon-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </span>
+        </div>
+    </div>
+    <hr>
+    <div class="pro-promotions-area goods_size">
+        <span class="span_text">
+            所有规格
+        </span>
+        <table class="promotions-tab he40-tr-td" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody id="good_style">
+
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="goods_number">
+                <span class="num-text">购买数量：</span>
+                <div>
+                    <a onclick="switch_num(-1);" class="choice-number fl" title="减" style="width:24px">-</a>
+                    <input class="wi43 fl" type="text" value="1" name="goods_num" id="goods_num" readonly="">
+                    <a onclick="switch_num(1);" class="choice-number fl" title="加" style="width:24px">+</a>
+                </div>
+
+
+
+
+    </div>
+    <hr>
+    <div id="confirm_btn" class="goods_sure">确定</div>
+</div>
+<!--<span data-select="0" data-itemid="{{=value.item_id}}">{{=value.spec_name}} {{=value.item}}</span>-->
+<script id="data_img" type="text/x-dot-template">
+    <img src="{{=it.original_img}}" style="width: 90%;height: 90%;padding: 3%;">
+</script>
+<script id="data_piace" type="text/x-dot-template">
+    ￥{{=it.shop_price}}
+</script>
+<script id="data_piaceitem" type="text/x-dot-template">
+    ￥{{=it.result}}
+</script>
+<script id="data_style" type="text/x-dot-template">
+    {{ for(var i in it){ }}
+        <div style="width: 100%;">
+            <span class="sku_name">{{=i}}</span>
+            <div class="sku_data">
+                <ul class="choice-colol ma-le-6">
+                    {{~it[i]:value:index}}
+                    <li>
+                        <div class="sku">
+                            <a onclick="switch_spec(this);" class="choice-size">{{=value.item}}</a>
+                            <input type="radio" style="display:none;" name="goods_spec[{{=i}}]" value="{{=value.item_id}}">
+                            <s></s>
+                        </div>
+                    </li>
+                   {{~}}
+                </ul>
+            </div>
+        </div>
+    {{ } }}
+
+
+
+
+
+
+
+
+</script>
+<style>
+    .goods_all{
+        width: 100%;
+        height: auto;
+        background-color: #ffffff;
+        position: fixed;
+        z-index: 99;
+        bottom: 0;
+        left: 0;
+        display: none;
+    }
+    hr{
+        border: 0;
+        background-color: darkgray;
+        height: 1px;
+    }
+    .goods_data{
+        width: 100%;
+        height: 100px;
+        background-color: #ffffff;
+    }
+    .good_img{
+        width: 40%;
+        height: 100px;
+        background-color: #ffffff;
+        float: left;
+    }
+    .goods_title{
+        width: 60%;
+        height: 100px;
+        background-color: #ffffff;
+        float: left;
+    }
+    .goods_piace{
+        display: block;
+        font-size: 20px;
+        color: red;
+        padding: 5px;
+    }
+    .goods_have{
+        display: block;
+        font-size: 14px;
+        padding: 4px;
+    }
+    .goods_up{
+        display: block;
+        padding: 5px;
+    }
+    .icon-close{
+        display: block;
+        float: right;
+        padding: 5px;
+        position: relative;
+        top: -80px;
+    }
+    .goods_size{
+        width: 100%;
+        height: 120px;
+        background-color: #ffffff;
+        padding-top: 10px;
+    }
+    .span_text{
+        display: block;
+        widht: 100%;
+        width: 30%;
+        text-align: left;
+    }
+    .good_style li{
+        float: left;
+        display: block;
+        width: 25%;
+        text-align: center;
+        padding-top: 10px;
+        list-style: none;
+    }
+    .good_style li span{
+        display: block;
+        border: 1px solid;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+        border-radius: 10px;
+        background-color: gainsboro;
+    }
+    .goods_number{
+        width: 100%;
+        height: 40px;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+    }
+    .num-text{
+        width: 30%;
+        height: 40px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 40px;
+        margin-left: 20px;
+        display: block;
+        float: left;
+    }
+    .goods_sure{
+        width: 100%;
+        height: 40px;
+        background-color: #FF6766;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        color: #ffffff;
+    }
+    .car_num{
+        width: 20px;
+        height: 20px;
+        float: right;
+        position: relative;
+        top: -10px;
+        border: 1px solid red;
+        display: block;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        background-color: crimson;
+    }
+    .sku{
+        width: 20%;
+        height: 20px;
+        float: left;
+        text-align: center;
+        line-height: 20px;
+        border-radius: 50px;
+    }
+    .add_class{
+        background-color: #FF6766 !important;
+        color: #ffffff;
+    }
+    .sku_name{
+        display: block;
+        text-align: center;
+        width: 15%;
+        float: left;
+        margin-top: 8px;
+    }
+    .sku_data{
+        width: 80%;
+        float: left;
+        margin-top: 5px;
+    }
+    .choice-number{
+        width: 24px;
+        height: 24px;
+        background-color: #FF6766 ;
+        display: block;
+        text-align: center;
+        line-height: 24px;
+        float: left;
+        margin-top: 10px;
+        border-radius: 50%;
+        color: white;
+    }
+
+    .goods_number input{
+        width: 30%;
+        height: 20px;
+        float: left;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    $(function(){
+        $("#addcar").click(function(){
+            $(".goods_all").toggle();
+            $(".masking").toggle();
+        });
+        $(".goods_sure").click(function(){
+            //var style_text = $(".goods_style >ul>li>span");
+            //alert(style_text.text())
+            //if(){}else{}
+            $(".goods_all").hide();
+            $(".masking").hide();
+        });
+        $(".icon-close").click(function(){
+            $(".goods_all").hide();
+            $(".masking").hide();
+        });
+
+        $('.good_style').on('click','span',function(){
+            //var  attr=$(this).text().trim();
+            // alert(attr);
+            $(this).toggleClass("add_class");
+            var item_id = $(this).data('itemid');
+            var is_select = $(this).data('select');
+            if(is_select==1){
+                $(this).data('select',0);
+            }else{
+                $(this).data('select',1);
+            }
+        });
+    });
+
+</script>
+<!-- 页脚标签-->
+<footer>
+    <nav class="footer-nav">
+        <div class="repair-fixed clearfix">
+            <div class="footer-customer-service float-left">
+                <div>
+                    <span class="icon-comment">
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>客服</span>
+                </div>
+            </div>
+            <div class="footer-shopping-cart float-left">
+                <span class="car_num">
+                    1
+                </span>
+                <div style="padding-left: 18px;">
+                    <span class="icon-shopping">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div>
+                    <span>购物车</span>
+                </div>
+            </div>
+            <div id="addcar" class="Join-shopping-cart float-left">
+                <span>加入购物车</span>
+            </div>
+            <div class="buy-now float-left">
+                <span>立即购买</span>
+            </div>
+        </div>
+    </nav>
+</footer>
+
+<script src="../js/commodity.js"></script>
+<!--详情图片dot.js-->
+<script id="good-details" type="text/x-dot-template">
+    <ul>
+        <img src="{{=it.original_img}}" data-goods="{{=it.goods_id}}">
+    </ul>
+</script>
+<script id="good-maps" type="text/x-dot-template">
+    {{~it:value:index}}
+        <img src="{{=value.image_url}}" style="width:100%;height: 100%">
+    {{~}}
+</script>
+<script id="more-maps" type="text/x-dot-template">
+    {{~it:value:index}}
+        <div class="swiper-slide">
+            <img class="img-item" alt="家居" title="家居" src="{{=value.image_url}}">
+        </div>
+    {{~}}
+</script>
+<script id="shop-note" type="text/x-dot-template">
+    <div class="float-left">
+        <div class="bed-money">
+            <span>￥{{=it.shop_price}}</span>
+        </div>
+        <div class="bed-details">
+            <span>{{=it.goods_name}}</span>
+        </div>
+    </div>
+</script>
+<!--APIcloud跳转页面-->
+<script>
+    apiready = function(){
+        $(".footer-shopping-cart").click(function(){
+            var sid = localStorage.enterid;
+            if(sid==""||sid==undefined||sid==null){
+                alert("请先登录")
+                window.location.href="index.html";
+            }else{
+                api.openWin({
+                    name: 'shoppingcar',
+                    url: './shoppingcar.html'
+                });
+            }
+        });
+        $(".home").click(function(){
+            api.openWin({
+                name: 'te',
+                url: './te.html'
+            });
+        });
+        $(".mycenter").click(function(){
+            api.openWin({
+                name: 'merchant',
+                url: './merchant.html'
+            });
+        });
+        $(".back").click(function(){
+            api.closeWin();
+        });
+        $(".buy-now").click(
+                function(){
+                    var sid = localStorage.enterid
+                    //console.log(sid);
+                    if(sid==""||sid==undefined||sid==null){
+                        //window.location.href="index.html";
+                        api.confirm({
+                            title: '提示',
+                            msg: '请先登录',
+                            buttons: ['确定', '取消']
+                        }, function() {
+                            api.openWin({
+                                name: 'index',
+                                url: './index.html'
+                            });
+                        });
+                    }else{
+                        api.openWin({
+                            name: 'data',
+                            url: './data.html'
+                        });
+                    }
+
+                }
+        );
+    };
+    /*更多轮播图js*/
+    $(".bed-more").click(function(){
+        $(".masking").show();
+        $(".swiper-container").show();
+        var mySwiper = new Swiper ('.swiper-container', {
+        })
+    });
+    $(".masking,.swiper-container").click(function(){
+        $(".masking").hide();
+        $(".swiper-container").hide();
+        $(".goods_all").hide();
+    });
+
+    /*获取图片详情js*/
+    $(function(){
+
+        function ksort(obj) {
+            var timestamp = Date.parse(new Date()) / 1000;
+            var keys = Object.keys(obj);
+            keys.sort();
+            var len = keys.length;
+            var s = '';
+            for (i in keys) {
+                s += obj[keys[i]];
+            }
+            var sign = md5(s + timestamp + 'xixa.me');
+            obj.sign = sign;
+            obj.time = timestamp;
+            return obj;
+        }
+
+
+        var goods_id = localStorage.goodsid;
+        var timestamp = Date.parse(new Date()) / 1000
+        var sign = md5(String(goods_id) + timestamp + 'xixa.me');
+        var obj = {'id': goods_id,'time':timestamp,'sign':sign};
+        //alert(parent_id);
+        console.log(obj);
+        $.post("http://xixa.me/Api/Goods/goodsInfo", obj, function (data) {
+            console.log(data);
+            if(data.status==1){
+                if(data.result.goods && data.result.goods.length!=0){
+                    console.log(data.result.goods.original_img);
+                    var arrText = doT.template($("#good-details").text());
+                    $("#bed-img").html(arrText(data.result.goods));
+                    var arrmaps = doT.template($("#good-maps").text());
+                    $("#details-img").html(arrmaps(data.result.gallery));
+                    var moremaps = doT.template($("#more-maps").text());
+                    $("#swiper_maps").html(moremaps(data.result.gallery));
+                    var shoptext = doT.template($("#shop-note").text());
+                    $("#shop-text").html(shoptext(data.result.goods));
+                    var data_img = doT.template($("#data_img").text());
+                    $("#good_img").html(data_img(data.result.goods));
+                    var data_piace = doT.template($("#data_piace").text());
+                    $("#goods_piace").html(data_piace(data.result.goods));
+                    var data_style = doT.template($("#data_style").text());
+                    $("#good_style").html(data_style(data.result.goods.goods_spec_list));
+                }else{
+                    $("#bed-img").html("赞无数据");
+                }
+            }else{
+                $("#bed-img").html("error");
+            }
+        },'json');
+    });
+</script>
+<script>
+    $(function(){
+        $('#confirm_btn').on('click',function(){
+            type_arr=[];
+            $('input[type=radio]:checked').each(function(){
+                var val = +$(this).val();
+                type_arr.push(val)
+            })
+            var itemid =  JSON.stringify(type_arr);
+            var sid = localStorage.enterid;
+            var goods_id = localStorage.goodsid;
+            var goods_num = $('#goods_num').val();
+            var goods_spec = itemid;
+            //alert(goods_spec)
+            //alert(sid);
+            var obj = {'sid': sid, 'goods_id': goods_id, 'goods_num': goods_num, 'goods_spec': goods_spec};
+            var new_obj = ksort(obj);
+            console.log(new_obj);
+            if(sid==""||sid==undefined||sid==null){
+                alert("请登录")
+                //window.location.href="index.html";
+                api.openWin({
+                    name: 'index',
+                    url: './index.html'
+                });
+            }else{
+                if(goods_spec.length==2){
+                    alert("请选择规格")
+                    $(".goods_all").show();
+                }else{
+                    $.post("http://xixa.me/Api/cart/addCart", new_obj, function (data) {
+                        if(data.status == 1){
+                            alert("成功加入购物车")
+                        }else{
+                            //alert("登录超时,请重新登录")
+                            window.location.href="index.html";
+                            api.openWin({
+                                name: 'index',
+                                url: './index.html'
+                            });
+                        }
+                    }, 'json');
+
+                }
+            }
+        });
+
+
+    });
+</script>
+<script>
+    function ksort(obj) {
+        var timestamp = Date.parse(new Date()) / 1000;
+        var keys = Object.keys(obj);
+        keys.sort();
+        var len = keys.length;
+        var s = '';
+        for (i in keys) {
+            s += obj[keys[i]];
+        }
+        var sign = md5(s + timestamp + 'xixa.me');
+        obj.sign = sign;
+        obj.time = timestamp;
+        return obj;
+    }
+    function switch_spec(spec)
+    {
+        $(spec).siblings('input').trigger('click');	 // 让隐藏的 单选按钮选中
+        $(spec).parent().parent().parent().parent().find("div.sku").removeClass('add_class'); //   清空勾选图标
+        $(spec).parent().addClass('add_class'); // 当前 加上勾选图标
+        // 更新商品价格
+        get_goods_price();
+    }
+    function switch_num(num)
+    {
+        var num2 = parseInt($("#goods_num").val());
+        num2 += num;
+        if(num2 < 1) num2 = 1; // 保证购买数量不能少于 1
+        $("#goods_num").val(num2); // 修改商品购买数量
+        // 更新商品价格
+        get_goods_price();
+    }
+    // 用作 sort 排序用
+    function sortNumber(a,b)
+    {
+        return a - b;
+    }
+    function get_goods_price() {
+        type_arr=[];
+        $('input[type=radio]:checked').each(function(){
+            var val = +$(this).val();
+            type_arr.push(val)
+        })
+        var itemid =  type_arr;
+        var gnum=$('#goods_num').val();
+        var gspec = itemid;
+        //alert(gspec)
+        var gid = localStorage.goodsid;
+        html=""
+        for(var i in gspec){
+           var tets = html += gspec[i]+',';
+        }
+        var s,newStr="";
+        s = tets.charAt(tets.length-1);
+        if(s==","){
+            for(var i=0;i<tets.length-1;i++){
+                newStr+=tets[i];
+            }
+        }else{}
+        var gspecs = newStr;
+        //alert(gspec);
+        var obj = {'goods_id': gid, 'spec_list': gspecs,'goods_num':gnum};
+        var new_obj = ksort(obj);
+        console.log(new_obj);
+        $.post("http://xixa.me/Api/goods/goodsPriceBySpec", new_obj, function (data) {
+                var data = JSON.parse(data);
+                var data_piaceitem = doT.template($("#data_piaceitem").text());
+                $("#goods_piace").html(data_piaceitem(data));
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/sofa.css"/>
+    <title></title>
+</head>
+<body>
+<!--导入jquery模板-->
+<script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/md5.min.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<header>
+    <div class="title">
+        <!--<span class="title-text">喜居</span>
+            <span class="title-icon">
+                <i class="fa fa-search fa-1x search-position" aria-hidden="true"></i>
+            </span>-->
+        <span class="icon-chevron back">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </span>
+        <div class="search_text">
+            <input type="text" class="input_text" placeholder="请输入..." >
+        </div>
+        <span class="search_btn">
+            搜索
+        </span>
+    </div>
+</header>
+<style>
+    .icon-chevron{
+        width: 10%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        float: left;
+    }
+    .search_text{
+        width: 75%;
+        float: left;
+        text-align: center;
+        height: 40px;
+        line-height: 36px;
+    }
+    .search_text input{
+        height: 20px;
+        border: 0;
+        border-radius: 20px;
+        width: 80%;
+        padding: 2px;
+        padding-left: 8px;
+        outline: none;
+    }
+    .search_btn{
+        display: block;
+        float: left;
+        width: 15%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: white;
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+    .search_good{
+        height: 100px;
+        width: 100%;
+        background-color: #ffffff;
+    }
+    .good_img{
+        width: 35%;
+        height: 100px;
+        float: left;
+        background-color: #ffffff;
+    }
+    .good_data{
+        width: 65%;
+        float: left;
+        height: 100px;
+        background-color: #ffffff;
+    }
+    .good_title{
+        display: block;
+        width: 98%;
+        font-size: 14px;
+        padding: 2px;
+    }
+    .good_paice{
+        display: block;
+        font-size: 16px;
+        color: red;
+        position: absolute;
+    }
+    hr{
+        margin-bottom: 3px;
+        height: 1px;
+        border: none;
+        border-top: 1px dashed #a1a1a1;
+        margin-top: 3px;
+    }
+</style>
+<div id="container" style="padding-bottom: 10px;padding-top: 45px;">
+    <div class="sofas">
+        <div id="search_list"></div>
+
+
+    </div>
+</div>
+
+<footer style="height: 10px;">
+    <!--<div class="optionals">
+        <nav>
+            <ul>
+                <li class="home">
+                        <span class="optional-icon">
+                            <i class="fa fa-home fa-1x fa-optional" id="icon" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text">首页</span>
+                </li>
+                <li class="option">
+                        <span class="optional-icon">
+                            <i class="fa fa-list-alt fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text">分类</span>
+                </li>
+                <li class="model">
+                        <span class="optional-icon">
+                            <i class="fa fa-picture-o fa-1x " aria-hidden="true" style="color: indianred"></i>
+                        </span>
+                    <span class="optional-text" style="color: indianred">样板间</span>
+                </li>
+                <li class="news">
+                        <span class="optional-icon">
+                            <i class="fa fa-comment-o fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text">消息</span>
+                </li>
+                <li class="user">
+                        <span class="optional-icon">
+                            <i class="fa fa-user fa-1x fa-optional" aria-hidden="true"></i>
+                        </span>
+                    <span class="optional-text" style="margin-left: -2px;">我</span>
+                </li>
+            </ul>
+        </nav>
+    </div>-->
+</footer>
+<script>
+    apiready = function() {
+        $(".back").click(function () {
+            api.closeWin();
+        });
+    };
+</script>
+<script id="goods_list" type="text/x-dot-template">
+    {{~it:value:index}}
+    <div class="search_good" data-id = "{{=value.goods_id}}">
+        <div class="good_img">
+            <img src="{{=value.thum}}" style="width: 95%;height: 95%;padding: 3px;text-align: center;"/>
+        </div>
+        <div class="good_data">
+            <span class="good_title">{{=value.goods_name}}</span>
+            <span class="good_paice">￥{{=value.shop_price}}</span>
+        </div>
+    </div>
+    <hr>
+    {{~}}
+</script>
+<script>
+    function ksort(obj) {
+        var timestamp = Date.parse(new Date()) / 1000;
+        var keys = Object.keys(obj);
+        keys.sort();
+        var len = keys.length;
+        var s = '';
+        for (i in keys) {
+            s += obj[keys[i]];
+        }
+        var sign = md5(s + timestamp + 'xixa.me');
+        obj.sign = sign;
+        obj.time = timestamp;
+        return obj;
+    }
+    $(".search_btn").click(function(){
+        var search_text = $(".input_text").val();
+        var page = 1;
+        var obj = {'q': search_text,'p': page};
+        var new_obj = ksort(obj);
+        console.log(new_obj);
+        $.post("http://xixa.me/Api/Goods/search", new_obj, function (data) {
+            var data = JSON.parse(data);
+            console.log(data);
+            if(data.result.goods_list==null){
+                $("#search_list").html("<p style='text-align: center;margin-top: 50%;color: darkgray;font-size: 24px;'>" +
+                        "暂无此商品</p>"
+                );
+            }else{
+                var goods_list = doT.template($("#goods_list").text());
+                $("#search_list").html(goods_list(data.result.goods_list));
+            }
+
+        });
+    });
+
+
+    $('#search_list').on('click','.search_good',function(){
+        var goods_id =$(this).data('id');
+        //alert(goods_id);
+        localStorage.goodsid =goods_id;
+        api.openWin({
+         name: 'commodity',
+         url: './commodity.html'
+         });
+    });
+
+
+</script>
+</body>
+</html>

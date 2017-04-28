@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/merchant.css"/>
+    <title>商户中心</title>
+</head>
+<body>
+<!--头部标签-->
+<header>
+    <div class="merchant">
+       <!-- <div class="nav-chevron" onclick="javascript:history.back(-1);">
+                <span class="icon-chevron">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </span>
+        </div>-->
+        <span class="icon-chevron back">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </span>
+        <span>商户中心</span>
+    </div>
+</header>
+
+
+<div class="container">
+    <div>
+        <div class="me-img">
+            <img src="../image/29463cc5c0c029bd9d105135d9fddfce%20.jpg" alt=""/>
+        </div>
+        <div class="merchant-head">
+            <img src="../image/head.jpg" alt="头像"/>
+        </div>
+        <div class="me-name">
+            <span>大鹏门窗</span>
+        </div>
+        <div class="me-mark">
+        <span>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </span>
+            <span>广东 深圳</span>
+        </div>
+    </div>
+    <div id="container">
+        <div class="round-one">
+            <div class="circle" style=" margin-left: 5%;">
+                <div class="adaptive-circle" style="background-color: #36CA98">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-comment-o fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    留言板
+                </div>
+            </div>
+            <div class="circle">
+                <div class="adaptive-circle performance" style="background-color: #FF6666">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-tachometer fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    业绩板
+                </div>
+            </div>
+            <div class="circle">
+                <div class="adaptive-circle account" style="background-color: #FF6666">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-jpy fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    结算板
+                </div>
+            </div>
+        </div>
+        <div class="round-two">
+            <div class="circle" style=" margin-left: 5%;">
+                <div class="adaptive-circle" style="background-color: #FF6666">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    商友
+                </div>
+            </div>
+            <div class="circle">
+                <div class="adaptive-circle performance" style="background-color: #FF6666">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-tachometer fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    业绩板
+                </div>
+            </div>
+            <div class="circle">
+                <div class="adaptive-circle" style="background-color: #FF6666">
+                    <div class="layout middle">
+                        <div>
+                            <i class="fa fa-bell fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptive-text">
+                    通知
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- 页脚标签-->
+<footer>
+
+</footer>
+<script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    apiready = function(){
+        $(".performance").click(function(){
+            api.openWin({
+                name: 'achievement',
+                url: './achievement.html'
+            });
+        });
+        $(".account").click(function(){
+            api.openWin({
+                name: 'settlement',
+                url: './settlement.html'
+            });
+        });
+        $(".back").click(function(){
+            api.closeWin();
+        });
+    };
+</script>
+</body>
+</html>

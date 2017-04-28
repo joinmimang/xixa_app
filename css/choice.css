@@ -1,0 +1,198 @@
+/*CSS初始化*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+   /* font: 12px arial;*/
+    /*font: 12px/1.5 tahoma,\5b8b\4f53,arial;*/
+}
+body{
+    background-color: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+code, kbd, pre, samp {
+    font-family: Microsoft YaHei, couriernew, courier, monospace;
+}
+
+small {
+    font-size: 12px;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+textarea {
+    resize: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*---------------------------------*/
+
+.float-left{
+    float: left;
+}
+
+/*-----------header----------------*/
+
+.nav-top{
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    line-height: 40px;
+    background-color: #E95E61;
+}
+.nav-chevron{
+    float: left;
+    margin-left: 10px;
+}
+.icon-chevron{
+    font-size: 15px;
+    color: #fff;
+}
+
+.nav-more{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+.icon-ellipsis{
+    font-size: 25px;
+    color: #fff;
+}
+
+
+.shop-nav{
+    width: 80px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 16px;
+}
+/*---------header over-----------------------*/
+
+/*-------------container-------------*/
+.container{
+    /*padding: 50px 0;*/
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.nav-choice{
+    width: 33.33%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+.choice-1{
+    background-color: #87D5BB;
+}
+.choice-2{
+    background-color: #58D5AB;
+}
+.choice-3{
+    background-color: #33CB98;
+}
+
+
+.choice-color{
+    display: none;
+    position: absolute;
+    width: 100%;
+    font-size: 15px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#C4FDCA), to(#61D1AB));
+}
+.panel-line{
+    padding: 10px 10px;
+}
+.panel-line span{
+    margin: 0 0 0 5px;
+}
+
+
+.choice-style{
+    display:none;
+    position: absolute;
+    width: 100%;
+    font-size: 15px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#C4FDCA), to(#61D1AB));
+}
+.style-ul{
+    padding: 10px 10px;
+}
+.style-ul li{
+    margin: 5px 0 0 30px;
+}
+
+
+.sofa img{
+    width: 100%;
+}
+
+/*--------------container over---------------*/

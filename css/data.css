@@ -1,0 +1,287 @@
+/*CSS初始化*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px arial;
+    /*font: 12px/1.5 tahoma,\5b8b\4f53,arial;*/
+}
+body{
+    background-color: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+code, kbd, pre, samp {
+    font-family: Microsoft YaHei, couriernew, courier, monospace;
+}
+
+small {
+    font-size: 12px;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+textarea {
+    resize: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*---------------------------------*/
+.float-left{
+    float: left;
+}
+
+/*----------导航栏------------*/
+.nav-top{
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    line-height: 40px;
+    background-color: #E95E61;
+}
+.nav-chevron{
+    float: left;
+    margin-left: 10px;
+}
+.icon-chevron{
+    font-size: 15px;
+    color: #fff;
+}
+
+.nav-more{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+.icon-ellipsis{
+    font-size: 25px;
+    color: #fff;
+}
+
+.more-nav{
+    position: absolute;
+    display: none;
+    width: 120px;
+    background-color: #474747;
+    top: 50px;
+    right: -3px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.more-nav div:nth-child(1){
+    border-bottom: 1px solid #777777;
+    width: 95%;
+    margin: 0 auto;
+}
+.more-nav div:nth-child(2){
+    border-bottom: 1px solid #777777;
+    width: 95%;
+    margin: 0 auto;
+}
+.more-nav div:nth-child(3){
+    border-bottom: 1px solid #777777;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.triangle{
+    position: absolute;
+    top: -7px;
+    left: 100px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #474747;
+}
+
+
+.more-nav span{
+    margin-left: 10px;
+}
+
+
+
+.shop-nav{
+    width: 150px;
+    margin: 0 auto;
+}
+.shop-nav div{
+    font-size: 15px;
+    margin-left: 15px;
+    float: left;
+}
+.nav-top div a{
+    color: #fff;
+}
+
+/*--------------导航栏结束----------*/
+
+
+
+
+/*-------------------内容------------*/
+.container{
+    margin-bottom: 50px;
+}
+
+.sofa img{
+    width: 100%;
+}
+
+.sofa-msg{
+    width: 245px;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+.sofa-type{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.sofa-length{
+    height: 40px;
+    width: 180px;
+    border-radius: 20px;
+    margin-left: 10%;
+}
+.a-bacc{
+    background-color: #0F9CA5;
+}
+.b-bacc{
+    background-color: #2A18CE;
+}
+.c-bacc{
+    background-color: #A5CE42;
+}
+.d-bacc{
+    background-color: #18A63A;
+}
+.e-bacc{
+    background-color: #CE0108;
+}
+.g-bacc{
+    background-color: #E739D6;
+}
+.h-bacc{
+    background-color: #4AC6A4;
+}
+
+/*-----------------footer----------------*/
+.footer-nav{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+/*fixed元素内部必须嵌套一个position:absolute元素，用来装载内容，目的就是为了让内容脱离fixed文档流，屏蔽一些fixed的坑*/
+.repair-fixed{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    color: #D58390;
+}
+.footer-customer-service{
+    width: 20%;
+    height: 50px;
+    background-color: #fff;
+}
+.icon-comment{
+    font-size: 25px;
+    color: #D58390;
+}
+.footer-shopping-cart{
+    width: 20%;
+    height: 50px;
+    background-color: #FFB4B8;
+    color:#fff;
+    font-size: 12px;
+}
+.icon-shopping{
+    font-size: 25px;
+    color: #fff;
+}
+.buy-now{
+    width: 60%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #FF6766;
+    color: #fff;
+    font-size: 12px;
+}
+/*---------------footer结束---------------*/
